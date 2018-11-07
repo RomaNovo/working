@@ -1,0 +1,44 @@
+* {
+	box-sizing: border-box;
+}
+
+.wrp {
+	margin: 0 auto;
+	width: 400px;
+}
+
+.group-campus {
+	&__item {
+
+		border-bottom: 1px solid white;
+		transition: transform .4s;
+		cursor: pointer;
+		background-color: lightgrey;
+
+		&:hover {
+			opacity: .9;
+		}
+	}
+}
+
+.campus {
+
+	&__title {
+		padding: 10px 0;
+		text-align: center;
+		text-transform: uppercase;
+		margin-bottom: 5px;
+		border-bottom: 1px solid black;
+	}
+
+	&__user {
+		margin-bottom: 5px;
+		padding: 10px;
+	}
+}
+
+
+
+
+
+
