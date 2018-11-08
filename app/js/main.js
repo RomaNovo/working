@@ -25,14 +25,15 @@ document.addEventListener('DOMContentLoaded', ()=> {
 	arrCampus.forEach( (v) => {
 		let itemCamp = create('div','group-campus__item','campus'),
 			campTitle = create('div', 'campus__title'),
-			campName = create('div', 'campus__name'),
-			campIcon = create('div', 'campus__icon'),
+			titleName = create('div', 'campus__name'),
+			titleIcon = create('div', 'campus__icon'),
 			campBlock = create('div', 'campus__block');
 			
-			campName.innerHTML = v.campus;
-			campIcon.innerHTML = `<span class='mdi-plus mdi'></span>`;
-			campTitle.appendChild(campName);
-			campTitle.appendChild(campIcon);
+			titleName.innerHTML = v.campus;
+			titleIcon.innerHTML = `<span class='mdi-plus mdi'></span>`;
+			/*campTitle.appendChild(titleName);
+			campTitle.appendChild(titleIcon);*/
+			campTitle.innerHTML = titleName.outerHTML + titleIcon.outerHTML;
 
 		v.teacher.forEach( t => {
 			let user = create('div', 'campus__user');
@@ -49,12 +50,12 @@ document.addEventListener('DOMContentLoaded', ()=> {
 									</div>`
 				user.appendChild(online);
 			let userCheck = create('div', '.campus__user--checkbox');
-				userCheck.innerHTML = `<div class="vacutable-cell" data-index="0" data-field="row_sel" data-value="">
-											<div class="g-chkbx">
-												<input type="checkbox" id="" name="check">
-												<label for=""></label>
-											</div>
-										</div>`
+				userCheck.innerHTML = `<div class="online-ident turn-offline"> 
+										<div class="online-ident-holder"> 
+											<div class="online-ident-cyrcle"></div> 
+											<div class="online-ident-text" offline="OFFLINE" online="ONLINE" lang_init=""></div>	
+										</div> 
+									</div>`
 				user.appendChild(userCheck);
 			let menu = create('div', 'campus__user--menu');
 					menu.innerHTML = `<i class="fas fa-align-right"></i>`
@@ -67,8 +68,10 @@ document.addEventListener('DOMContentLoaded', ()=> {
 			
 			campBlock.appendChild(user);
 		})
-		itemCamp.appendChild(campTitle);
-		itemCamp.appendChild(campBlock);
+
+		/*itemCamp.appendChild(campTitle);
+		itemCamp.appendChild(campBlock);*/
+		itemCamp.innerHTML += campTitle.outerHTML + campBlock.outerHTML;
 		groupCamp.appendChild(itemCamp)	
 	})
 
