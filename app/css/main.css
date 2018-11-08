@@ -15,10 +15,7 @@
     font-size: 13px;
     font-family: 'Roboto', sans-serif;
     border-bottom: 1px solid white;
-    cursor: pointer;
-    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#d2d2d2));
-    position: relative;
-    z-index: 0; }
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#d2d2d2)); }
 
 .campus {
   position: relative;
@@ -29,17 +26,39 @@
     .campus__block_active {
       height: 100%; }
   .campus__title {
-    padding: 5px;
-    text-align: center;
+    padding: 5px 10px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
     letter-spacing: .7px;
     color: #3b3b3b;
     background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.77)), to(rgba(228, 228, 228, 0.78)));
     -webkit-box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.12), 0 2px 2px -1px rgba(0, 0, 0, 0.24);
             box-shadow: 0 2px 3px -1px rgba(0, 0, 0, 0.12), 0 2px 2px -1px rgba(0, 0, 0, 0.24);
     position: relative;
-    font-weight: 300; }
-    .campus__title:first-letter {
+    font-weight: 300;
+    cursor: pointer; }
+  .campus__name {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1 1 auto;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    text-align: center; }
+    .campus__name:first-letter {
       color: red; }
+  .campus__icon {
+    margin-left: auto; }
+    .campus__icon .mdi {
+      font-size: 18px;
+      color: #089000;
+      font-weight: 800; }
+      .campus__icon .mdi:hover {
+        color: rgba(8, 144, 0, 0.62); }
   .campus__user {
     font-weight: 500;
     padding: 10px;

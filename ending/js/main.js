@@ -24,9 +24,15 @@ document.addEventListener('DOMContentLoaded', ()=> {
 		
 	arrCampus.forEach( (v) => {
 		let itemCamp = create('div','group-campus__item','campus'),
-			campTitle = create('div', 'campus__title');
+			campTitle = create('div', 'campus__title'),
+			campName = create('div', 'campus__name'),
+			campIcon = create('div', 'campus__icon'),
 			campBlock = create('div', 'campus__block');
-			campTitle.innerHTML = v.campus;
+			
+			campName.innerHTML = v.campus;
+			campIcon.innerHTML = `<span class='mdi-plus mdi'></span>`;
+			campTitle.appendChild(campName);
+			campTitle.appendChild(campIcon);
 
 		v.teacher.forEach( t => {
 			let user = create('div', 'campus__user');
@@ -61,7 +67,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
 			
 			campBlock.appendChild(user);
 		})
-
 		itemCamp.appendChild(campTitle);
 		itemCamp.appendChild(campBlock);
 		groupCamp.appendChild(itemCamp)	
@@ -75,9 +80,17 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
 	elem.forEach( (v)=> {
 		let title = v.querySelector('.campus__title'),
-			block = v.querySelector('.campus__block');
+			block = v.querySelector('.campus__block'),
+			icon = v.querySelector('.mdi');
 		title.addEventListener('click', ()=> {
-
+			if(icon.classList.contains('mdi-plus')) {
+				icon.classList.remove('mdi-plus');
+				icon.classList.add('mdi-minus');
+			} else {
+				icon.classList.remove('mdi-minus');
+				icon.classList.add('mdi-plus');
+			}
+			
 			block.classList.toggle('campus__block_active')
 		})
 	})
