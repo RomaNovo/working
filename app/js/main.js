@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
 
 		v.teacher.forEach( t => {
 			let user = create('div', 'campus__user');
+
 			let userName = create('div', 'campus__user--name')
 				userName.innerHTML = t;
 				user.appendChild(userName);
@@ -57,14 +58,36 @@ document.addEventListener('DOMContentLoaded', ()=> {
 										</div> 
 									</div>`
 				user.appendChild(userCheck);
-			let menu = create('div', 'campus__user--menu');
-					menu.innerHTML = `<i class="fas fa-align-right"></i>`
+			let userIcon = create('div', 'campus__user--icon-menu');
+					userIcon.innerHTML = `<i class="fas fa-align-right"></i>`
 									  /*<div class='campus__hidden-menu hidden-menu'>
 									  	<div class='hidden-menu__item'>1</div>
 									  	<div class='hidden-menu__item'>2</div>
 									  	<div class='hidden-menu__item'>3</div>
 									  </div>;*/
-				user.appendChild(menu);
+				user.appendChild(userIcon);
+			let userMenu = create('div', 'campus__user--hid-menu');
+				userMenu.innerHTML =`
+									<div class='campus__user--hid-menu__item'>
+										<div class='campus__user--hid-menu__item-icon'>
+											<i class='mdi-rotate-3d mdi'></i>
+										</div>
+										<div class='campus__user--hid-menu__item-text'>Action</div>
+									</div>
+									<div class='campus__user--hid-menu__item'>
+										<div class='campus__user--hid-menu__item-icon'>
+											<i class='mdi-rotate-3d mdi'></i>
+										</div>
+										<div class='campus__user--hid-menu__item-text'>Another action</div>
+									</div>
+									<div class='campus__user--hid-menu__item'>
+										<div class='campus__user--hid-menu__item-icon'>
+											<i class='mdi-rotate-3d mdi'></i>
+										</div>
+										<div class='campus__user--hid-menu__item-text'>Something else here</div>
+									</div>
+									`	;
+			user.appendChild(userMenu);
 			
 			campBlock.appendChild(user);
 		})
@@ -95,9 +118,25 @@ document.addEventListener('DOMContentLoaded', ()=> {
 			}
 			
 			block.classList.toggle('campus__block_active')
+
 		})
 	})
 
-	let hiddenMenu = document.querySelector('.hidden-menu');
-	 	hiddenMenu.style.display = 'block';
+	let userBlock = document.querySelectorAll('.campus__user');
+	let allMenu = document.querySelectorAll('.campus__user--hid-menu');
+
+	userBlock.forEach((v)=> {
+		let menu = v.querySelector('.campus__user--icon-menu')
+		let hide = v.querySelector('.campus__user--hid-menu');
+		menu.addEventListener('click', ()=> {
+			let condition;
+			condition = (hide.classList.contains('campus__user--hid-menu_active'))? true : false;
+			allMenu.forEach( v => {
+				v.classList.remove('campus__user--hid-menu_active');
+			})	
+			if(!condition) hide.classList.add('campus__user--hid-menu_active')
+		})
+	})
+
+
 })
