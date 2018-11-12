@@ -122,6 +122,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
 		})
 	})
 
+	
+
 	let userBlock = document.querySelectorAll('.campus__user');
 	let allMenu = document.querySelectorAll('.campus__user--hid-menu');
 
@@ -133,10 +135,27 @@ document.addEventListener('DOMContentLoaded', ()=> {
 			condition = (hide.classList.contains('campus__user--hid-menu_active'))? true : false;
 			allMenu.forEach( v => {
 				v.classList.remove('campus__user--hid-menu_active');
+				document.querySelectorAll('.campus__user--icon-menu').forEach(v=>{
+					v.style.color = 'grey';
+				})
 			})	
-			if(!condition) hide.classList.add('campus__user--hid-menu_active')
+			if(!condition) {
+				hide.classList.add('campus__user--hid-menu_active');
+				menu.style.color = '#089000';
+			}
 		})
 	})
 
-
+	document.body.addEventListener('click', (e) => {
+		let icon = document.querySelectorAll('.fas');
+		let menu = document.querySelectorAll('.campus__user--icon-menu');
+		
+		icon.forEach( function(v,i)  {
+			
+			if(e.target !== v) {				
+				allMenu[i].classList.remove('campus__user--hid-menu_active');
+				menu[i].style.color = 'grey';
+			}
+		})	
+	})
 })

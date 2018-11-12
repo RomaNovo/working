@@ -204,3 +204,8 @@ body {
       -webkit-transform: rotate(-45deg);
           -ms-transform: rotate(-45deg);
               transform: rotate(-45deg); }
+
+.header {
+  height: -webkit-calc(100vh - 20px);
+  height: calc(100vh - 20px);
+  background: yellow; }
